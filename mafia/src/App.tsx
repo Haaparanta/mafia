@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Login } from './screens/login/login';
+import { auth } from "./components/firebase/firebase";
 
 function App() {
+  const user = auth.currentUser;
   return (
     <>
-      <h1>Mafia</h1>
+      {user ? <Hello/> : <Login/>}
     </>
   );
+}
+
+const Hello = () => {
+  return (
+    <div>
+      Hello
+    </div>
+  )
 }
 
 
