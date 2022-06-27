@@ -7,7 +7,7 @@ function App() {
   const user = auth.currentUser;
   return (
     <>
-      {user ? <MenuPage/> : <Login/>}
+      {user ? <MenuPage/> : <MenuPage/>}
     </>
   );
 }
