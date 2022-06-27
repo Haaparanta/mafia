@@ -7,19 +7,30 @@ import { StatisticsPage } from "./statisticsPage";
 import { SettingsPage } from "./settingsPage";
 import { signOutUser } from "../../components/firebase/logOut";
 
+import './menuPage.css';
+
 export const MenuPage = () => {
   const [page, setPage] = useState("menu");
-
   if (page === "menu") {
     return (
       <div className='app'>
         <div className='container'>
           <div className='item'>
             <button onClick={() => setPage("create")}>Create Game</button>
+          </div>
+          <div className='item'>
             <button onClick={() => setPage("join")}>Join Game</button>
+          </div>
+          <div className='item'>
             <button onClick={() => setPage("store")}>Store</button>
+          </div>
+          <div className='item'>
             <button onClick={() => setPage("statistics")}>Statistics</button>
+          </div>
+          <div className='item'>
             <button onClick={() => setPage("settings")}>Settings</button>
+          </div>
+          <div className='item'>
             <button onClick={signOutUser}>Sign Out</button>
           </div>
         </div>

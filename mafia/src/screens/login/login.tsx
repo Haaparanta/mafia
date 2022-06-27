@@ -1,5 +1,6 @@
 import React from "react";
 import { SignWithGoogle } from "./google";
+import './login.css';
 
 export const Login = () => {
   return (
