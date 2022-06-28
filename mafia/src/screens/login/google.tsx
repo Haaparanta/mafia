@@ -8,8 +8,12 @@ export const SignWithGoogle = () => {
   }
 
   return (
-    <div>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
-    </div>
+    <div className='app'>
+      <div className='container'>
+        <div className='item'></div>
+          <button onClick={signInWithGoogle}>Sign in with Google</button>
+        </div>
+      </div>
+    
   );
 }

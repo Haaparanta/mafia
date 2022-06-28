@@ -1,15 +1,14 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 import { SignWithGoogle } from "./google";
+import { auth } from "../../components/firebase/firebase";
 import './login.css';
 
 export const Login = () => {
+  const user = auth.currentUser;
   return (
-    <div className='app'>
-      <div className='container'>
-        <div className='item'>
-          <SignWithGoogle />
-        </div>
-      </div>
-    </div>
-  )
+    <>
+    {(user !== null) ? <SignWithGoogle /> : <Navigate replace to="/menu" />}
+    </>
+  );
 }
