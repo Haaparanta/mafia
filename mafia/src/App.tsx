@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
+import { Error } from './screens/error/error';
 import { Start } from './screens/start/start';
 import { Login } from './screens/login/login';
 import { MenuPage } from './screens/menu/menuPage';
@@ -20,6 +22,9 @@ function App() {
       <Route path="store" element={<StorePage />} />
       <Route path="statistics" element={<StatisticsPage />} />
       <Route path="settings" element={<SettingsPage />} />
+      <Route path="error" element={<Error />} />
+      <Route path="*" element={<Error />} />
+      
     </Routes>
   );
 }
