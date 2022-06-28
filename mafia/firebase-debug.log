@@ -1,0 +1,98 @@
+[debug] [2022-06-28T18:29:24.357Z] ----------------------------------------------------------------------
+[debug] [2022-06-28T18:29:24.358Z] Command:       /opt/homebrew/Cellar/node/18.4.0/bin/node /opt/homebrew/bin/firebase deploy
+[debug] [2022-06-28T18:29:24.358Z] CLI Version:   11.1.0
+[debug] [2022-06-28T18:29:24.358Z] Platform:      darwin
+[debug] [2022-06-28T18:29:24.358Z] Node Version:  v18.4.0
+[debug] [2022-06-28T18:29:24.359Z] Time:          Tue Jun 28 2022 21:29:24 GMT+0300 (Eastern European Summer Time)
+[debug] [2022-06-28T18:29:24.359Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-28T18:29:24.388Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-28T18:29:24.389Z] > authorizing via signed-in user (Vesahaaparanta@hotmail.fi)
+[debug] [2022-06-28T18:29:24.389Z] [iam] checking project mafiaprojekti for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-06-28T18:29:24.390Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mafiaprojekti:testIamPermissions [none]
+[debug] [2022-06-28T18:29:24.390Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mafiaprojekti:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-06-28T18:29:25.327Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mafiaprojekti:testIamPermissions 200
+[debug] [2022-06-28T18:29:25.327Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mafiaprojekti:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-06-28T18:29:25.328Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mafiaprojekti [none]
+[debug] [2022-06-28T18:29:25.630Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mafiaprojekti 200
+[debug] [2022-06-28T18:29:25.631Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mafiaprojekti {"projectId":"mafiaprojekti","projectNumber":"464801459193","displayName":"Mafia","name":"projects/mafiaprojekti","resources":{"hostingSite":"mafiaprojekti"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'mafiaprojekti'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-06-28T18:29:25.634Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mafiaprojekti [none]
+[debug] [2022-06-28T18:29:25.845Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mafiaprojekti 200
+[debug] [2022-06-28T18:29:25.845Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mafiaprojekti {"projectId":"mafiaprojekti","projectNumber":"464801459193","displayName":"Mafia","name":"projects/mafiaprojekti","resources":{"hostingSite":"mafiaprojekti"},"state":"ACTIVE"}
+[debug] [2022-06-28T18:29:25.848Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions [none]
+[debug] [2022-06-28T18:29:25.848Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-06-28T18:29:27.378Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions 200
+[debug] [2022-06-28T18:29:27.379Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions {"name":"projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2","status":"CREATED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[mafiaprojekti]: beginning deploy... 
+[info] i  hosting[mafiaprojekti]: found 14 files in build 
+[debug] [2022-06-28T18:29:27.391Z] [hosting] uploading with 200 concurrency
+[debug] [2022-06-28T18:29:27.675Z] [hosting] hash cache [YnVpbGQ] stored for 14 files
+[debug] [2022-06-28T18:29:27.675Z] [hosting][hash queue][FINAL] {"max":279,"min":6,"avg":28.285714285714285,"active":0,"complete":14,"success":14,"errored":0,"retried":0,"total":14,"elapsed":283}
+[debug] [2022-06-28T18:29:27.675Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2:populateFiles [none]
+[debug] [2022-06-28T18:29:27.675Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2:populateFiles {"files":{"/asset-manifest.json":"a3a821d9652d0524b6736fecf5e4f8a98d99ed3e933869ca4ffe6b6c39f5c223","/precache-manifest.586aae7c64705e86593eecf58c7d6ca4.js":"42f3e30423908989710ab92ea4299ebd6a4c0074c55ed5d10fc25fb314903816","/favicon.ico":"b72f7455f00e4e58792d2bca892abb068e2213838c0316d6b7a0d6d16acd1955","/index.html":"26ef15353edd6124718b3254f71ce5b75bfe1c0941049e9f182b72029ea752f2","/manifest.json":"341d52628782f8ac9290bbfc43298afccb47b7cbfcee146ae30cf0f46bc30900","/static/css/main.f865bcfa.chunk.css":"30fc4a6570adf552ded3ec3cccf52331515789254433f977ac43b19c4b736822","/static/css/main.f865bcfa.chunk.css.map":"c591aad122c394a426892980cf173d21ae4a9b209c5f55bee987c94105376459","/service-worker.js":"9f83dfdf2ff06287463677e4a73c2a6a672b9deb2a4f18c222992c31ce866ced","/static/js/main.13c272fa.chunk.js":"36ddac8eaeed293cf2a181ca4f0e183efdbd9d1f2bb5671a65d66ad1059a5198","/static/js/runtime~main.229c360f.js":"dbe189fe130313d04dc42edcaa021db9317ce6d58c07ab66fe538fdfe41fe6d7","/static/js/main.13c272fa.chunk.js.map":"9f5540c86fbdcd342196c6dd459ee30e8fc5e7873bbd5c2f963f5488bbf2e632","/static/js/runtime~main.229c360f.js.map":"b2f1f5578e572791ed8967e3d0090b7eb2ec5f9d87d1bd433d4d7ffdb5d15f5e","/static/js/1.2bee0b3b.chunk.js":"bc11653f0314344fc17a84f42e6408dd010375e41d81fb1e24223c59b65f1feb","/static/js/1.2bee0b3b.chunk.js.map":"2cd5edc80d650635b34ce494bdb7c90658c1c880172a2c2468858623c0cd1b92"}}
+[debug] [2022-06-28T18:29:28.909Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2:populateFiles 200
+[debug] [2022-06-28T18:29:28.909Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2:populateFiles {"uploadRequiredHashes":["26ef15353edd6124718b3254f71ce5b75bfe1c0941049e9f182b72029ea752f2","36ddac8eaeed293cf2a181ca4f0e183efdbd9d1f2bb5671a65d66ad1059a5198","a3a821d9652d0524b6736fecf5e4f8a98d99ed3e933869ca4ffe6b6c39f5c223","9f5540c86fbdcd342196c6dd459ee30e8fc5e7873bbd5c2f963f5488bbf2e632","42f3e30423908989710ab92ea4299ebd6a4c0074c55ed5d10fc25fb314903816","9f83dfdf2ff06287463677e4a73c2a6a672b9deb2a4f18c222992c31ce866ced"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files"}
+[debug] [2022-06-28T18:29:28.912Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/26ef15353edd6124718b3254f71ce5b75bfe1c0941049e9f182b72029ea752f2 [none]
+[debug] [2022-06-28T18:29:28.912Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/26ef15353edd6124718b3254f71ce5b75bfe1c0941049e9f182b72029ea752f2 [stream]
+[debug] [2022-06-28T18:29:28.913Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/36ddac8eaeed293cf2a181ca4f0e183efdbd9d1f2bb5671a65d66ad1059a5198 [none]
+[debug] [2022-06-28T18:29:28.914Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/36ddac8eaeed293cf2a181ca4f0e183efdbd9d1f2bb5671a65d66ad1059a5198 [stream]
+[debug] [2022-06-28T18:29:28.914Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/a3a821d9652d0524b6736fecf5e4f8a98d99ed3e933869ca4ffe6b6c39f5c223 [none]
+[debug] [2022-06-28T18:29:28.914Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/a3a821d9652d0524b6736fecf5e4f8a98d99ed3e933869ca4ffe6b6c39f5c223 [stream]
+[debug] [2022-06-28T18:29:28.915Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f5540c86fbdcd342196c6dd459ee30e8fc5e7873bbd5c2f963f5488bbf2e632 [none]
+[debug] [2022-06-28T18:29:28.915Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f5540c86fbdcd342196c6dd459ee30e8fc5e7873bbd5c2f963f5488bbf2e632 [stream]
+[debug] [2022-06-28T18:29:28.917Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/42f3e30423908989710ab92ea4299ebd6a4c0074c55ed5d10fc25fb314903816 [none]
+[debug] [2022-06-28T18:29:28.917Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/42f3e30423908989710ab92ea4299ebd6a4c0074c55ed5d10fc25fb314903816 [stream]
+[debug] [2022-06-28T18:29:28.918Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f83dfdf2ff06287463677e4a73c2a6a672b9deb2a4f18c222992c31ce866ced [none]
+[debug] [2022-06-28T18:29:28.918Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f83dfdf2ff06287463677e4a73c2a6a672b9deb2a4f18c222992c31ce866ced [stream]
+[debug] [2022-06-28T18:29:28.919Z] [hosting][populate queue][FINAL] {"max":1237,"min":1237,"avg":1237,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1245}
+[debug] [2022-06-28T18:29:28.919Z] [hosting] uploads queued: 6
+[debug] [2022-06-28T18:29:30.852Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/36ddac8eaeed293cf2a181ca4f0e183efdbd9d1f2bb5671a65d66ad1059a5198 200
+[debug] [2022-06-28T18:29:30.852Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/36ddac8eaeed293cf2a181ca4f0e183efdbd9d1f2bb5671a65d66ad1059a5198 [stream]
+[debug] [2022-06-28T18:29:30.854Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/a3a821d9652d0524b6736fecf5e4f8a98d99ed3e933869ca4ffe6b6c39f5c223 200
+[debug] [2022-06-28T18:29:30.854Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/a3a821d9652d0524b6736fecf5e4f8a98d99ed3e933869ca4ffe6b6c39f5c223 [stream]
+[debug] [2022-06-28T18:29:30.855Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f83dfdf2ff06287463677e4a73c2a6a672b9deb2a4f18c222992c31ce866ced 200
+[debug] [2022-06-28T18:29:30.855Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f83dfdf2ff06287463677e4a73c2a6a672b9deb2a4f18c222992c31ce866ced [stream]
+[debug] [2022-06-28T18:29:30.856Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/26ef15353edd6124718b3254f71ce5b75bfe1c0941049e9f182b72029ea752f2 200
+[debug] [2022-06-28T18:29:30.856Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/26ef15353edd6124718b3254f71ce5b75bfe1c0941049e9f182b72029ea752f2 [stream]
+[debug] [2022-06-28T18:29:30.857Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f5540c86fbdcd342196c6dd459ee30e8fc5e7873bbd5c2f963f5488bbf2e632 200
+[debug] [2022-06-28T18:29:30.857Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/9f5540c86fbdcd342196c6dd459ee30e8fc5e7873bbd5c2f963f5488bbf2e632 [stream]
+[debug] [2022-06-28T18:29:30.859Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/42f3e30423908989710ab92ea4299ebd6a4c0074c55ed5d10fc25fb314903816 200
+[debug] [2022-06-28T18:29:30.859Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/mafiaprojekti/versions/a6e65a9e618895b2/files/42f3e30423908989710ab92ea4299ebd6a4c0074c55ed5d10fc25fb314903816 [stream]
+[debug] [2022-06-28T18:29:30.860Z] [hosting][upload queue][FINAL] {"max":1949,"min":1942,"avg":1945.5,"active":0,"complete":6,"success":6,"errored":0,"retried":0,"total":6,"elapsed":1951}
+[info] ✔  hosting[mafiaprojekti]: file upload complete 
+[debug] [2022-06-28T18:29:30.861Z] [hosting] deploy completed after 3481ms
+[debug] [2022-06-28T18:29:30.864Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "mafiaprojekti"
+    },
+    "site": "mafiaprojekti",
+    "version": "projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2"
+  }
+]
+[info] i  hosting[mafiaprojekti]: finalizing version... 
+[debug] [2022-06-28T18:29:30.865Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2 updateMask=status%2Cconfig
+[debug] [2022-06-28T18:29:30.865Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2022-06-28T18:29:32.082Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2 200
+[debug] [2022-06-28T18:29:32.082Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2 {"name":"projects/464801459193/sites/mafiaprojekti/versions/a6e65a9e618895b2","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2022-06-28T18:29:26.685015Z","createUser":{"email":"Vesahaaparanta@hotmail.fi"},"finalizeTime":"2022-06-28T18:29:31.957178Z","finalizeUser":{"email":"Vesahaaparanta@hotmail.fi"}}
+[debug] [2022-06-28T18:29:32.083Z] [hosting] finalized version for mafiaprojekti:[object Object]
+[info] ✔  hosting[mafiaprojekti]: version finalized 
+[info] i  hosting[mafiaprojekti]: releasing new version... 
+[debug] [2022-06-28T18:29:32.083Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/releases versionName=projects%2F464801459193%2Fsites%2Fmafiaprojekti%2Fversions%2Fa6e65a9e618895b2
+[debug] [2022-06-28T18:29:32.084Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/464801459193/sites/mafiaprojekti/releases {"message":null}
