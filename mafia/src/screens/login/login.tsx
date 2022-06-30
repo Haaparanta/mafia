@@ -16,7 +16,7 @@ export const Login = () => {
    });
   return (
     <>
-      {user ? <Navigate to="/menu" /> : <SignWithGoogle />}
+      {user ? <Navigate to="/" /> : <SignWithGoogle />}
     </>
   );
 }
