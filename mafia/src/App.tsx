@@ -14,9 +14,9 @@ import { SettingsPage } from './screens/menu/settingsPage';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Start />} />
-      <Route path="login" element={<Login />} />
-      <Route path="menu" element={<MenuPage />} />
+      <Route path="/" element={<Start/>} />
+      <Route path="login" element={<Login/>} />
+      <Route path="menu" element={<MenuPage/>} />
       <Route path="create" element={<CreateGamePage />} />
       <Route path="join" element={<JoinGamePage />} />
       <Route path="store" element={<StorePage />} />
@@ -24,7 +24,6 @@ function App() {
       <Route path="settings" element={<SettingsPage />} />
       <Route path="error" element={<Error />} />
       <Route path="*" element={<Error />} />
-      
     </Routes>
   );
 }

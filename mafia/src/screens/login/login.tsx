@@ -1,22 +1,23 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import store from "../../reducers/store";
 import { SignWithGoogle } from "./google";
-import { auth } from "../../components/firebase/firebase";
-import { onAuthStateChanged } from 'firebase/auth';
 import './login.css';
 
+
 export const Login = () => {
-  const [user, setUser] = useState(false);
-   onAuthStateChanged(auth, (user) => {
-     if (user) {
-       setUser(true);
-     } else {
-       setUser(false);
-     }
-   });
+  const user = useSelector((state: any) => state.user);
+  const [active, setActive] = useState(user.active);
+  store.subscribe(() => {
+    const user = store.getState().user;
+    setActive(user.active);
+    console.log('Login subs active: ', active);
+  }, );
+
   return (
     <>
-      {user ? <Navigate to="/" /> : <SignWithGoogle />}
+      { active ? <Navigate to="/" /> : <SignWithGoogle/>}
     </>
   );
 }
