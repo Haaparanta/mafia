@@ -23,7 +23,7 @@ const gameSlice = createSlice({
     jackalNumbers: 0,
     gameStarted: false,
     gameRoles: {},
-    gameAlivePlayers: [],
+    gameAlivePlayers: {},
     gameStateDayOrNight: true,
     gameRound: 0,
     gameStage: '',

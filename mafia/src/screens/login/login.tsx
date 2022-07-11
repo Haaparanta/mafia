@@ -12,7 +12,6 @@ export const Login = () => {
   store.subscribe(() => {
     const user = store.getState().user;
     setActive(user.active);
-    console.log('Login subs active: ', active);
   }, );
 
   return (
