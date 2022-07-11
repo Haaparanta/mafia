@@ -16,6 +16,7 @@ const userSlice = createSlice({
     gamesLostAsGood: 0,
     gamesLostAsEvil: 0,
     gamesLostAsNeutral: 0,
+    userID: '',
   },
   reducers: {
     setName: (state, action) => {
@@ -54,8 +55,12 @@ const userSlice = createSlice({
     setGamesLostAsNeutral: (state, action) => {
       state.gamesLostAsNeutral = action.payload;
     },
+    setUserID: (state, action) => {
+      state.userID = action.payload;
+    }
   }
 });
 
-export const { setName, setLastGame, setActive, setAddFree, setItems, setGamesNarrated, setGamesWonAsGood, setGamesWonAsEvil, setGamesWonAsNeutral, setGamesLostAsGood, setGamesLostAsEvil, setGamesLostAsNeutral} = userSlice.actions;
+export const { setName, setLastGame, setActive, setAddFree, setItems, setGamesNarrated, setGamesWonAsGood, setGamesWonAsEvil, setGamesWonAsNeutral, setGamesLostAsGood, setGamesLostAsEvil, setGamesLostAsNeutral, setUserID} = userSlice.actions;
 export default userSlice.reducer;
+
