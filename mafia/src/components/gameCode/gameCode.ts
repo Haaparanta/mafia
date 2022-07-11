@@ -24,7 +24,7 @@ export const generateGameCode = () => {
 }
 
 
-const validCode = (code: string) => {
+export const validCode = (code: string) => {
   if (validCodeLength(code)) {
     if (validCodeCharacters(code)) {
       if (isNotUsed(code)) {

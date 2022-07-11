@@ -26,6 +26,7 @@ const gameSlice = createSlice({
     gameAlivePlayers: [],
     gameStateDayOrNight: true,
     gameRound: 0,
+    gameStage: '',
     gameMafiaSelected: {},
     gameDoctorSelected: {},
     gameDetectiveSelected: {},
@@ -108,6 +109,9 @@ const gameSlice = createSlice({
     setGameRound: (state, action) => {
       state.gameRound = action.payload;
     },
+    setGameStage: (state, action) => {
+      state.gameStage = action.payload;
+    },
     setGameMafiaSelected: (state, action) => {
       state.gameMafiaSelected = action.payload;
     },
@@ -144,6 +148,6 @@ const gameSlice = createSlice({
   }
 });
 
-export const { setLobbyName, setPrivate, setPlayers, setNames, setPossibleRoles, setCreatedBy, setNarrator, setDelay, setVoteTime, setNightTime, setDayTime, setShowRoles, setShowVotes, setMafiaNumbers, setDoctorNumbers, setDetectiveNumbers, setJesterNumbers, setJackalNumbers, setGameStarted, setGameRoles, setGameAlivePlayers, setGameStateDayOrNight, setGameRound, setGameMafiaSelected, setGameDoctorSelected, setGameDetectiveSelected, setGameMafiaKilled, setGameJackalKilled, setGameDoctorHealed, setGameStateVote, setGameVotePlayer, setGameEnded, setGameEndedReason, setGameWinner } = gameSlice.actions;
+export const { setLobbyName, setPrivate, setPlayers, setNames, setPossibleRoles, setCreatedBy, setNarrator, setDelay, setVoteTime, setNightTime, setDayTime, setShowRoles, setShowVotes, setMafiaNumbers, setDoctorNumbers, setDetectiveNumbers, setJesterNumbers, setJackalNumbers, setGameStarted, setGameRoles, setGameAlivePlayers, setGameStateDayOrNight, setGameRound, setGameStage, setGameMafiaSelected, setGameDoctorSelected, setGameDetectiveSelected, setGameMafiaKilled, setGameJackalKilled, setGameDoctorHealed, setGameStateVote, setGameVotePlayer, setGameEnded, setGameEndedReason, setGameWinner } = gameSlice.actions;
 export default gameSlice.reducer;
 

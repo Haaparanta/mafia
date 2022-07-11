@@ -9,9 +9,6 @@ export const Start = () => {
   store.subscribe(() => {
     const user = store.getState().user;
     setActive(user.active);
-    console.log('Start subs active: ', active);
-    console.log('Start subs user: ', user);
-    console.log('Start subs user.active: ', user.active);
   }, );
   if (user.active) {
     return (

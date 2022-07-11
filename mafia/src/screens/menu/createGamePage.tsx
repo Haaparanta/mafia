@@ -9,7 +9,6 @@ export const CreateGamePage = () => {
   const dispatch = useDispatch()
   dispatch(setLastGame(gameCode))
   const user = useSelector((state: any) => state.user)
-  console.log('CreateGamePage user: ', user);
 
   if (!user.active) {
     return (

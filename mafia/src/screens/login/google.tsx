@@ -16,10 +16,7 @@ export const SignWithGoogle = () => {
           const userSnapshot = await getDoc(userRef);
           if (userSnapshot.exists()) {
             console.log('User already exists');
-            console.log(userSnapshot.data().name);
-            const name = userSnapshot.data().name;
-            console.log('User signed in', name);
-            dispatch(setName(name));
+            dispatch(setName(userSnapshot.data().name));
             dispatch(setLastGame(userSnapshot.data().lastGame));
             dispatch(setActive(true));
             dispatch(setAddFree(userSnapshot.data().addFree));

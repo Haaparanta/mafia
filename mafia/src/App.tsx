@@ -23,7 +23,7 @@ function App() {
       <Route path="store" element={<StorePage />} />
       <Route path="statistics" element={<StatisticsPage />} />
       <Route path="settings" element={<SettingsPage />} />
-      <Route path="lobby/:gameCode" element={<LobbyPage gameCode={'AAAAAA'} />} />
+      <Route path="lobby/:gameCode" element={<LobbyPage />} />
       <Route path="error" element={<Error />} />
       <Route path="*" element={<Error />} />
     </Routes>

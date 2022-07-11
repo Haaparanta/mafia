@@ -12,9 +12,7 @@ export const MenuPage = () => {
   store.subscribe(() => {
     const user = store.getState().user;
     setActive(user.active);
-    console.log('Menu subs active: ', active);
   }, );
-  console.log('Menu subs user: ', user);
 
   if (!user.active) {
     return (

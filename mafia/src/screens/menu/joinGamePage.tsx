@@ -1,20 +1,19 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import store from "../../reducers/store";
+import { Link, Navigate } from "react-router-dom";
 import { setLastGame } from "../../reducers/userReducer";
 
 export const JoinGamePage = () => {
   const userS = useSelector((state: any) => state.user);
-  const [gameCode, setGameCode] = useState('');
-  store.subscribe(() => {
-    const user = store.getState().user;
-    setGameCode(user.lastGame);
-  }, );
-  console.log('JoinGamePage user: ', userS);
+  const [gameCode, setGameCode] = useState('AAAAAA');
   const dispatch = useDispatch();
 
+  const handleChange = (e: any) => {
+    setGameCode(e.target.value);
+  }
+
   const handleSubmit = (e: any) => {
+    console.log(e.target.value);
     dispatch(setLastGame(e.target.value));
     setGameCode(e.target.value);
     e.preventDefault();
@@ -37,16 +36,18 @@ export const JoinGamePage = () => {
         <div className='container'>
           <div className='item'>
             <form onSubmit={handleSubmit}>
-              <input type="text" value={gameCode} maxLength={6}/>
-              <input type="submit" value="Submit"/>
+              <input value={gameCode} maxLength={6} onChange={handleChange}/>
+              <button type="submit">save</button>
             </form>
           </div>
         </div>
         <div className='container'>
           <div className='item'>
-            <button>
-              Join Game
-            </button>
+            <Link to={{pathname: `/lobby/${gameCode}`}} >
+              <button>
+                Join Game
+              </button>
+            </Link>
           </div>
         </div>
       </div>
