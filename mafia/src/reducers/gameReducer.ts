@@ -6,10 +6,11 @@ const gameSlice = createSlice({
     lobbyName: '',
     private: false,
     players: [],
-    names: {},
+    playersByName: {},
     possibleRoles: [],
     createdBy: '',
     narrator: true,
+    creator: false,
     delay: 30,
     voteTime: 30,
     nightTime: 30,
@@ -38,6 +39,7 @@ const gameSlice = createSlice({
     gameEnded: false,
     gameEndedReason: '',
     gameWinner: [],
+    loading: true,
   },
   reducers: {
     setLobbyName: (state, action) => {
@@ -49,8 +51,8 @@ const gameSlice = createSlice({
     setPlayers: (state, action) => {
       state.players = action.payload;
     },
-    setNames: (state, action) => {
-      state.names = action.payload;
+    setPlayersByName: (state, action) => {
+      state.playersByName = action.payload;
     },
     setPossibleRoles: (state, action) => {
       state.possibleRoles = action.payload;
@@ -60,6 +62,9 @@ const gameSlice = createSlice({
     },
     setNarrator: (state, action) => {
       state.narrator = action.payload;
+    },
+    setCreator: (state, action) => {
+      state.creator = action.payload;
     },
     setDelay: (state, action) => {
       state.delay = action.payload;
@@ -144,10 +149,13 @@ const gameSlice = createSlice({
     },
     setGameWinner: (state, action) => {
       state.gameWinner = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
     }
   }
 });
 
-export const { setLobbyName, setPrivate, setPlayers, setNames, setPossibleRoles, setCreatedBy, setNarrator, setDelay, setVoteTime, setNightTime, setDayTime, setShowRoles, setShowVotes, setMafiaNumbers, setDoctorNumbers, setDetectiveNumbers, setJesterNumbers, setJackalNumbers, setGameStarted, setGameRoles, setGameAlivePlayers, setGameStateDayOrNight, setGameRound, setGameStage, setGameMafiaSelected, setGameDoctorSelected, setGameDetectiveSelected, setGameMafiaKilled, setGameJackalKilled, setGameDoctorHealed, setGameStateVote, setGameVotePlayer, setGameEnded, setGameEndedReason, setGameWinner } = gameSlice.actions;
+export const { setLobbyName, setPrivate, setPlayers, setPlayersByName, setPossibleRoles, setCreatedBy, setNarrator, setCreator, setDelay, setVoteTime, setNightTime, setDayTime, setShowRoles, setShowVotes, setMafiaNumbers, setDoctorNumbers, setDetectiveNumbers, setJesterNumbers, setJackalNumbers, setGameStarted, setGameRoles, setGameAlivePlayers, setGameStateDayOrNight, setGameRound, setGameStage, setGameMafiaSelected, setGameDoctorSelected, setGameDetectiveSelected, setGameMafiaKilled, setGameJackalKilled, setGameDoctorHealed, setGameStateVote, setGameVotePlayer, setGameEnded, setGameEndedReason, setGameWinner, setLoading } = gameSlice.actions;
 export default gameSlice.reducer;
 
