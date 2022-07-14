@@ -10,6 +10,7 @@ import { JoinGamePage } from './screens/menu/joinGamePage';
 import { StorePage } from './screens/menu/storePage';
 import { StatisticsPage } from './screens/menu/statisticsPage';
 import { SettingsPage } from './screens/menu/settingsPage';
+import PreLobbyPage from './screens/lobby/preLobbyPage';
 import LobbyPage from './screens/lobby/lobbyPage';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path="store" element={<StorePage />} />
       <Route path="statistics" element={<StatisticsPage />} />
       <Route path="settings" element={<SettingsPage />} />
+      <Route path="preLobby/:gameCode" element={<PreLobbyPage />} />
       <Route path="lobby/:gameCode" element={<LobbyPage />} />
       <Route path="error" element={<Error />} />
       <Route path="*" element={<Error />} />

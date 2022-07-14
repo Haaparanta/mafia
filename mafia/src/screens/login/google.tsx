@@ -3,7 +3,7 @@ import { googleSignIn } from '../../components/firebase/auth';
 import { auth, db } from '../../components/firebase/firebase';
 import { getDoc, doc, setDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import { setActive, setAddFree, setGamesLostAsEvil, setGamesLostAsGood, setGamesLostAsNeutral, setGamesNarrated, setGamesWonAsEvil, setGamesWonAsGood, setGamesWonAsNeutral, setItems, setLastGame, setName } from '../../reducers/userReducer';
+import { setActive, setAddFree, setGamesLostAsEvil, setGamesLostAsGood, setGamesLostAsNeutral, setGamesNarrated, setGamesWonAsEvil, setGamesWonAsGood, setGamesWonAsNeutral, setItems, setLastGame, setName, setUserID } from '../../reducers/userReducer';
 
 export const SignWithGoogle = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ export const SignWithGoogle = () => {
           const userRef = doc(db, 'user', userAuth.uid.toString());  // get user doc
           const userSnapshot = await getDoc(userRef);
           if (userSnapshot.exists()) {
+            dispatch(setUserID(userAuth.uid.toString()));
             dispatch(setName(userSnapshot.data().name));
             dispatch(setLastGame(userSnapshot.data().lastGame));
             dispatch(setActive(true));
@@ -42,6 +43,7 @@ export const SignWithGoogle = () => {
               gamesLostAsEvil: 0,
               gamesLostAsNeutral: 0,
             });
+            dispatch(setUserID(userAuth.uid.toString()));
             dispatch(setName(userAuth.displayName));
             dispatch(setLastGame(''));
             dispatch(setActive(true));

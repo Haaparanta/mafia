@@ -8,10 +8,6 @@ const validCodeCharacters = (code: string) => {
 }
 
 
-// needs to connect to firebase
-const isNotUsed = (code: string) => {
-  return true;
-}
 
 export const generateGameCode = () => {
   let code = Math.random().toString(36).substring(2, 8);
@@ -27,9 +23,7 @@ export const generateGameCode = () => {
 export const validCode = (code: string) => {
   if (validCodeLength(code)) {
     if (validCodeCharacters(code)) {
-      if (isNotUsed(code)) {
         return true;
-      }
     } 
   }
   return false;

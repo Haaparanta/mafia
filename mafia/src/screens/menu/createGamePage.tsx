@@ -35,7 +35,7 @@ export const CreateGamePage = () => {
         </div>
         <div className='container'>
           <div className='item'>
-            <Link to={{pathname: `/lobby/${gameCode}`}} >
+            <Link to={{pathname: `/preLobby/${gameCode}`}} >
               <button>
                 Create Game
               </button>
