@@ -1,11 +1,14 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { setLastGame } from "../../reducers/userReducer";
+import { setGameStage } from "../../reducers/gameReducer";
 
 export const JoinGamePage = () => {
   const userS = useSelector((state: any) => state.user);
   const [gameCode, setGameCode] = useState('AAAAAA');
+
+  const dispatch = useDispatch();
+  dispatch(setGameStage('joinGame'));
 
   const handleChange = (e: any) => {
     setGameCode(e.target.value.toUpperCase());

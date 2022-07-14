@@ -27,7 +27,7 @@ const gameSlice = createSlice({
     gameAlivePlayers: {},
     gameStateDayOrNight: true,
     gameRound: 0,
-    gameStage: '',
+    gameStage: 'joinGame',
     gameMafiaSelected: {},
     gameDoctorSelected: {},
     gameDetectiveSelected: {},

@@ -1,16 +1,20 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Navigate } from "react-router-dom"
-import { generateGameCode } from "../../components/gameCode/gameCode"
-import { setLastGame } from "../../reducers/userReducer"
+import { Link, Navigate } from "react-router-dom"
+import { setGameStage } from "../../reducers/gameReducer"
 
 export const CreateGamePage = () => {
-  const [gameCode, setGameCode] = useState(generateGameCode());
-  const dispatch = useDispatch()
-  dispatch(setLastGame(gameCode))
-  const user = useSelector((state: any) => state.user)
+  const userS = useSelector((state: any) => state.user);
+  const [gameCode, setGameCode] = useState('AAAAAA');
 
-  if (!user.active) {
+  const dispatch = useDispatch();
+  dispatch(setGameStage('createGame'));
+
+  const handleChange = (e: any) => {
+    setGameCode(e.target.value.toUpperCase());
+  }
+
+  if (!userS.active) {
     return (
       <>
         <Navigate to="/" />
@@ -21,18 +25,24 @@ export const CreateGamePage = () => {
       <div className='app'>
         <div className='container'>
           <div className='item'>
-            <strong>{user.lastGame}</strong>
+            <strong>{userS.lastGame}</strong>
           </div>
         </div>
         <div className='container'>
           <div className='item'>
-            <button>
-              Create Game
-            </button>
+            <input value={gameCode} maxLength={6} minLength={6} onChange={handleChange}/>
+          </div>
+        </div>
+        <div className='container'>
+          <div className='item'>
+            <Link to={{pathname: `/lobby/${gameCode}`}} >
+              <button>
+                Create Game
+              </button>
+            </Link>
           </div>
         </div>
       </div>
     )
   }
 }
-
