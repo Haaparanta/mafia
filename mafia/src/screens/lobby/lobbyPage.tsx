@@ -14,7 +14,7 @@ const LobbyPage = () => {
   const dispatch = useDispatch();
   const id = user.userID;
   const name = user.name;
-
+  
   
 
   if (!user.active) {
@@ -32,85 +32,95 @@ const LobbyPage = () => {
       <Navigate to="*" />
     );
   }
-
   const lobbyRef = doc(db, 'games', gameCode, 'lobby', 'lobby');
-  const unsubscribe = onSnapshot(lobbyRef, (snapshot) => {
-    if (snapshot.exists()) {
-      const lobbyData = snapshot.data();
-      console.log(lobbyData);
-      dispatch(setCreatedBy(lobbyData.createdBy));
-      dispatch(setDayTime(lobbyData.dayTime));
-      dispatch(setNightTime(lobbyData.nightTime));
-      dispatch(setDelay(lobbyData.delay));
-      dispatch(setVoteTime(lobbyData.voteTime));
-      dispatch(setDetectiveNumbers(lobbyData.detectiveNumbers));
-      dispatch(setDoctorNumbers(lobbyData.doctorNumbers));
-      dispatch(setJackalNumbers(lobbyData.jackalNumbers));
-      dispatch(setMafiaNumbers(lobbyData.mafiaNumbers));
-      dispatch(setNarrator(lobbyData.narrator));
-      dispatch(setPrivate(lobbyData.private));
-      dispatch(setShowRoles(lobbyData.showRoles));
-      dispatch(setShowVotes(lobbyData.showVotes));
-      dispatch(setPlayers(lobbyData.playersByUID));
-      dispatch(setPlayersByName(lobbyData.playersByName));
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = onSnapshot(lobbyRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const lobbyData = snapshot.data();
+        dispatch(setCreatedBy(lobbyData.createdBy));
+        dispatch(setDayTime(lobbyData.dayTime));
+        dispatch(setNightTime(lobbyData.nightTime));
+        dispatch(setDelay(lobbyData.delay));
+        dispatch(setVoteTime(lobbyData.voteTime));
+        dispatch(setDetectiveNumbers(lobbyData.detectiveNumbers));
+        dispatch(setDoctorNumbers(lobbyData.doctorNumbers));
+        dispatch(setJackalNumbers(lobbyData.jackalNumbers));
+        dispatch(setMafiaNumbers(lobbyData.mafiaNumbers));
+        dispatch(setNarrator(lobbyData.narrator));
+        dispatch(setPrivate(lobbyData.private));
+        dispatch(setShowRoles(lobbyData.showRoles));
+        dispatch(setShowVotes(lobbyData.showVotes));
+        dispatch(setPlayers(lobbyData.playersByUID));
+        dispatch(setPlayersByName(lobbyData.playersByName));
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
 
 
   const startNewGame = () => {
-    const alivePlayers = new Map<string, boolean>();
-    const roles = new Map<string, string>();
-    for (let uid of game.playersByName.keys()) {
-      alivePlayers.set(uid, true);
-      roles.set(uid, 'town');
+    console.log('startNewGame');
+    const alivePlayers: {[uid : string]: boolean} = {};
+    const roles: {[uid:string]: string}= {};
+    console.log('1');
+    for (let uid of game.players) {
+      alivePlayers[uid] = true;
+      roles[uid] = 'town';
     }
-    roles.set(game.createdBy, 'narrator');
+    console.log('2');
+    roles[game.createdBy] = 'narrator';
     for (let i = 0; i < game.mafiaNumbers; i++) {
       while (true) {
-        const uid = game.playersByName.keys().next().value;
-        if ('town' === roles.get(uid)) {
-          roles.set(uid, 'mafia');
+        const uid = game.players[Math.floor(Math.random() * game.players.length)];
+        if ('town' === roles.uid) {
+          roles[uid] = 'mafia';
           break;
         }
       }
     }
+    console.log('3');
     for (let i = 0; i < game.detectiveNumbers; i++) {
       while (true) {
-        const uid = game.playersByName.keys().next().value;
-        if ('town' === roles.get(uid)) {
-          roles.set(uid, 'detective');
+        const uid = game.players[Math.floor(Math.random() * game.players.length)];
+        if ('town' === roles.uid) {
+          roles[uid] = 'detective';
           break;
         }
       }
     }
+    console.log('4');
     for (let i = 0; i < game.doctorNumbers; i++) {
       while (true) {
-        const uid = game.playersByName.keys().next().value;
-        if ('town' === roles.get(uid)) {
-          roles.set(uid, 'doctor');
+        const uid = game.players[Math.floor(Math.random() * game.players.length)];
+        if ('town' === roles.uid) {
+          roles[uid] = 'doctor';
           break;
         }
       }
     }
+    console.log('5');
     for (let i = 0; i < game.jackalNumbers; i++) {
       while (true) {
-        const uid = game.playersByName.keys().next().value;
-        if ('town' === roles.get(uid)) {
-          roles.set(uid, 'jackal');
+        const uid = game.players[Math.floor(Math.random() * game.players.length)];
+        if ('town' === roles.uid) {
+          roles[uid] = 'jackal';
           break;
         }
       }
     }
+    console.log('7');
     for (let i = 0; i < game.jesterNumbers; i++) {
       while (true) {
-        const uid = game.playersByName.keys().next().value;
-        if ('town' === roles.get(uid)) {
-          roles.set(uid, 'jester');
+        const uid = game.players[Math.floor(Math.random() * game.players.length)];
+        if ('town' === roles.uid) {
+          roles[uid] = 'jester';
           break;
         }
       }
     }
+    console.log(roles);
+    console.log(alivePlayers);
     const gameRef = doc(db, 'games', gameCode, 'game', 'game');
     setDoc(gameRef, {
       gameStarted: false,
@@ -126,6 +136,7 @@ const LobbyPage = () => {
       gameEndedReason: '', // why did the game end?
       gameEndedBy: [], // who ended the game? list of uids
     });
+    dispatch(setGameStage('list'));
   }
 
   if (game.gameStage === 'list') {
