@@ -62,7 +62,8 @@ const PreLobbyPage = () => {
           gameStarted: false,
           gameRoles: {id: 'narrator'},
           gameAlivePlayers: {id: true},
-          gameStage: 'lobby', 
+          gameStage: 'lobby',
+          gameActions: {}, 
           gameDay: 0, 
           gameDayOrNight: true, // true = day, false = night
           gameStateVote: {}, // do we have a vote for this day?

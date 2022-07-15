@@ -24,6 +24,7 @@ const gameSlice = createSlice({
     jackalNumbers: 0,
     gameStarted: false,
     gameRoles: {},
+    gameActions: {}, 
     gameAlivePlayers: {},
     gameStateDayOrNight: true,
     gameRound: 0,
@@ -34,7 +35,7 @@ const gameSlice = createSlice({
     gameMafiaKilled: [],
     gameJackalKilled: [],
     gameDoctorHealed: [],
-    gameStateVote: 0,
+    gameStateVote: {},
     gameVotePlayer: {},
     gameEnded: false,
     gameEndedReason: '',
@@ -105,6 +106,9 @@ const gameSlice = createSlice({
     setGameRoles: (state, action) => {
       state.gameRoles = action.payload;
     },
+    setGameActions: (state, action) => {
+      state.gameActions = action.payload;
+    },
     setGameAlivePlayers: (state, action) => {
       state.gameAlivePlayers = action.payload;
     },
@@ -156,6 +160,6 @@ const gameSlice = createSlice({
   }
 });
 
-export const { setLobbyName, setPrivate, setPlayers, setPlayersByName, setPossibleRoles, setCreatedBy, setNarrator, setCreator, setDelay, setVoteTime, setNightTime, setDayTime, setShowRoles, setShowVotes, setMafiaNumbers, setDoctorNumbers, setDetectiveNumbers, setJesterNumbers, setJackalNumbers, setGameStarted, setGameRoles, setGameAlivePlayers, setGameStateDayOrNight, setGameRound, setGameStage, setGameMafiaSelected, setGameDoctorSelected, setGameDetectiveSelected, setGameMafiaKilled, setGameJackalKilled, setGameDoctorHealed, setGameStateVote, setGameVotePlayer, setGameEnded, setGameEndedReason, setGameWinner, setLoading } = gameSlice.actions;
+export const { setLobbyName, setPrivate, setPlayers, setPlayersByName, setPossibleRoles, setCreatedBy, setNarrator, setCreator, setDelay, setVoteTime, setNightTime, setDayTime, setShowRoles, setShowVotes, setMafiaNumbers, setDoctorNumbers, setDetectiveNumbers, setJesterNumbers, setJackalNumbers, setGameStarted, setGameRoles, setGameActions, setGameAlivePlayers, setGameStateDayOrNight, setGameRound, setGameStage, setGameMafiaSelected, setGameDoctorSelected, setGameDetectiveSelected, setGameMafiaKilled, setGameJackalKilled, setGameDoctorHealed, setGameStateVote, setGameVotePlayer, setGameEnded, setGameEndedReason, setGameWinner, setLoading } = gameSlice.actions;
 export default gameSlice.reducer;
 
