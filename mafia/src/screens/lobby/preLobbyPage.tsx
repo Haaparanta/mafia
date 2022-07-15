@@ -55,14 +55,14 @@ const PreLobbyPage = () => {
           private: false,
           showRoles: false,
           showVotes: false,
-          playersByUID: [id],
-          playersByName: {id: name},
+          playersByUID: [],
+          playersByName: {},
         });
         await setDoc(doc(db, 'games', gameCode, 'game', 'game'), {
           gameStarted: false,
-          gameRoles: {id: 'narrator'},
-          gameAlivePlayers: {id: true},
-          gameStage: 'lobby',
+          gameRoles: {},
+          gameAlivePlayers: {},
+          gameStage: 'list',
           gameActions: {}, 
           gameDay: 0, 
           gameDayOrNight: true, // true = day, false = night

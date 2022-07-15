@@ -6,7 +6,7 @@ const gameSlice = createSlice({
     lobbyName: '',
     private: false,
     players: [],
-    playersByName: {},
+    playersByName: new Map<string, string>(),
     possibleRoles: [],
     createdBy: '',
     narrator: true,

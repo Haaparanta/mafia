@@ -57,6 +57,83 @@ const LobbyPage = () => {
   });
 
 
+
+  const startNewGame = () => {
+    const alivePlayers = new Map<string, boolean>();
+    const roles = new Map<string, string>();
+    for (let uid of game.playersByName.keys()) {
+      alivePlayers.set(uid, true);
+      roles.set(uid, 'town');
+    }
+    roles.set(game.createdBy, 'narrator');
+    for (let i = 0; i < game.mafiaNumbers; i++) {
+      while (true) {
+        const uid = game.playersByName.keys().next().value;
+        if ('town' === roles.get(uid)) {
+          roles.set(uid, 'mafia');
+          break;
+        }
+      }
+    }
+    for (let i = 0; i < game.detectiveNumbers; i++) {
+      while (true) {
+        const uid = game.playersByName.keys().next().value;
+        if ('town' === roles.get(uid)) {
+          roles.set(uid, 'detective');
+          break;
+        }
+      }
+    }
+    for (let i = 0; i < game.doctorNumbers; i++) {
+      while (true) {
+        const uid = game.playersByName.keys().next().value;
+        if ('town' === roles.get(uid)) {
+          roles.set(uid, 'doctor');
+          break;
+        }
+      }
+    }
+    for (let i = 0; i < game.jackalNumbers; i++) {
+      while (true) {
+        const uid = game.playersByName.keys().next().value;
+        if ('town' === roles.get(uid)) {
+          roles.set(uid, 'jackal');
+          break;
+        }
+      }
+    }
+    for (let i = 0; i < game.jesterNumbers; i++) {
+      while (true) {
+        const uid = game.playersByName.keys().next().value;
+        if ('town' === roles.get(uid)) {
+          roles.set(uid, 'jester');
+          break;
+        }
+      }
+    }
+    const gameRef = doc(db, 'games', gameCode, 'game', 'game');
+    setDoc(gameRef, {
+      gameStarted: false,
+      gameRoles: roles,
+      gameAlivePlayers: alivePlayers,
+      gameStage: 'list',
+      gameActions: new Map<number, string>(),
+      gameDay: 0, 
+      gameDayOrNight: true, // true = day, false = night
+      gameStateVote: new Map<string, true>(), // do we have a vote for this day?
+      gameVotePlayer: new Map<string, string>() , // who voted? who was voted for?
+      gameEnded: false, // has the game ended?
+      gameEndedReason: '', // why did the game end?
+      gameEndedBy: [], // who ended the game? list of uids
+    });
+  }
+
+  if (game.gameStage === 'list') {
+    return (
+      <Navigate to={{pathname: `/game/${gameCode}`}} />
+    );
+  }
+
   if (game.creator) {
     return (
       <div className='app'> 
@@ -80,7 +157,7 @@ const LobbyPage = () => {
             <button>How many jackals:{game.jackalNumbers}</button>
           </div>
           <div className='item'>
-            <button>Let's Play</button>
+            <button onClick={startNewGame}>Let's Play</button>
           </div>
         </div>
       </div>
