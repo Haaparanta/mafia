@@ -80,11 +80,7 @@ const PreLobbyPage = () => {
         await setDoc(doc(db, 'games', gameCode, 'game', 'jackal'), {
           jackalSelected: {}, // who selected a player to kill? who was selected to die?
         });
-        return (
-          <>
-            <Navigate to='/join' />
-          </>
-        );
+        dispatch(setLoading(3))
       }
       createGame();
     }, []);
@@ -102,7 +98,7 @@ const PreLobbyPage = () => {
             const lobbyData = lobbySnapshot.data();
             if (lobbyData.createdBy === id) {
               console.log('You are the creator of this game');
-              dispatch(setCreatedBy(true));
+              dispatch(setCreator(true));
             }
             dispatch(setCreatedBy(lobbyData.createdBy));
             dispatch(setDayTime(lobbyData.dayTime));
@@ -155,11 +151,7 @@ const PreLobbyPage = () => {
                   const jackalRef = doc(db, 'games', gameCode, 'game', 'jackal');
                   const jackalSnapshot = await getDoc(jackalRef);
                   if (jackalSnapshot.exists()) {
-                    return (
-                      <>
-                        <Navigate to={{pathname: `/lobby/${gameCode}`}} />
-                      </>
-                    );
+                    dispatch(setLoading(2));
                   }
                 }
               }
@@ -171,16 +163,35 @@ const PreLobbyPage = () => {
     }, []);
   }
   
-
-  return (
-    <div className='app'>
-      <div className='container'>
-        <div className='item'>
-          <strong>Loading</strong>
+  if (game.loading === 1) {
+    return (
+      <div className='app'>
+        <div className='container'>
+          <div className='item'>
+            <strong>Loading</strong>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else if (game.loading === 2) {
+    return (
+      <>
+        <Navigate to={{pathname: `/lobby/${gameCode}`}} />
+      </>
+    );
+  } else if (game.loading === 3) {
+    return (
+      <>
+        <Navigate to='/join' />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Navigate to="*" />
+      </>
+    );
+  }
 }
 
 

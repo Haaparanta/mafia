@@ -12,6 +12,7 @@ import { StatisticsPage } from './screens/menu/statisticsPage';
 import { SettingsPage } from './screens/menu/settingsPage';
 import PreLobbyPage from './screens/lobby/preLobbyPage';
 import LobbyPage from './screens/lobby/lobbyPage';
+import GamePage from './screens/game/gamePage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Route path="settings" element={<SettingsPage />} />
       <Route path="preLobby/:gameCode" element={<PreLobbyPage />} />
       <Route path="lobby/:gameCode" element={<LobbyPage />} />
+      <Route path="game/:gameCode" element={<GamePage />} />
       <Route path="error" element={<Error />} />
       <Route path="*" element={<Error />} />
     </Routes>

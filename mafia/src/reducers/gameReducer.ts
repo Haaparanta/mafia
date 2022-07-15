@@ -39,7 +39,7 @@ const gameSlice = createSlice({
     gameEnded: false,
     gameEndedReason: '',
     gameWinner: [],
-    loading: true,
+    loading: 1,
   },
   reducers: {
     setLobbyName: (state, action) => {

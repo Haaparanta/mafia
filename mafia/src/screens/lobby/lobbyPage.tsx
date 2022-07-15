@@ -1,4 +1,4 @@
-import { doc, getDoc, setDoc} from 'firebase/firestore';
+import { doc, onSnapshot, setDoc} from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
@@ -14,28 +14,50 @@ const LobbyPage = () => {
   const dispatch = useDispatch();
   const id = user.userID;
   const name = user.name;
+
+  
+
   if (!user.active) {
     return (
-      <>
-        <Navigate to="/" />
-      </>
+      <Navigate to="/" />
     );
   }
   if (!gameCode) {
     return (
-      <>
-        <Navigate to="*" />
-      </>
+      <Navigate to="*" />
     );
   }
   if (!validCode(gameCode)) {
     return (
-      <>
-        <Navigate to="*" />
-      </>
+      <Navigate to="*" />
     );
   }
-  if (game.createdBy) {
+
+  const lobbyRef = doc(db, 'games', gameCode, 'lobby', 'lobby');
+  const unsubscribe = onSnapshot(lobbyRef, (snapshot) => {
+    if (snapshot.exists()) {
+      const lobbyData = snapshot.data();
+      console.log(lobbyData);
+      dispatch(setCreatedBy(lobbyData.createdBy));
+      dispatch(setDayTime(lobbyData.dayTime));
+      dispatch(setNightTime(lobbyData.nightTime));
+      dispatch(setDelay(lobbyData.delay));
+      dispatch(setVoteTime(lobbyData.voteTime));
+      dispatch(setDetectiveNumbers(lobbyData.detectiveNumbers));
+      dispatch(setDoctorNumbers(lobbyData.doctorNumbers));
+      dispatch(setJackalNumbers(lobbyData.jackalNumbers));
+      dispatch(setMafiaNumbers(lobbyData.mafiaNumbers));
+      dispatch(setNarrator(lobbyData.narrator));
+      dispatch(setPrivate(lobbyData.private));
+      dispatch(setShowRoles(lobbyData.showRoles));
+      dispatch(setShowVotes(lobbyData.showVotes));
+      dispatch(setPlayers(lobbyData.playersByUID));
+      dispatch(setPlayersByName(lobbyData.playersByName));
+    }
+  });
+
+
+  if (game.creator) {
     return (
       <div className='app'> 
         <div className='container'>
